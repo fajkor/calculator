@@ -1,0 +1,38 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+#calculator {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25em;
+  height: 35em;
+}
+
+input {
+  padding: 2.5em;
+  border-radius: 5px;
+}
+
+#container {
+  display: flex;
+  justify-content: space-between;
+  outline: 1px solid black;
+  height: 80%;
+  border-radius: 5px;
+}
+
+#numberOperatorContainer {
+  /* outline: 1px solid black; */
+  flex: 4;
+}
+
+#operatorContainer {
+  box-sizing: border-box;
+  border-left: 1px solid black;
+  flex: 1.2;
+}
