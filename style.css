@@ -3,58 +3,165 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
+  /* background-color: #fbeec1; */
 }
 
 #calculator {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+/*   box-sizing: border-box;
+  border: 2px solid #2F3C7E;
+  border-radius: 5px; */
+  /* background-color: #edf5e1;
+  background-color: #fbeec1;
+  background-color: #f5e1ed; */
 }
 
-input {
-  padding: 2.5em;
+#display {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 2.35em;
+  border: 2px solid #2F3C7E;
+  /* border: 2px solid #AA96DA; */
+  /* border: 2px solid #da7b93; */
+
   border-radius: 5px;
+  /* background-color: #FBEAEB; */
+  background-color: #e3d79e;
+  /* background-color: #FFFFD2; */
+  /* background-color: #cab964; */
+  /* background-color: #7e542f; */
 }
 
-#container {
+p {
+  color: #2F3C7E;
+  /* color: #AA96DA; */
+  /* color: #da7b93; */
+  /* font-weight: bolder; */
+  /* font-size: larger; */
+}
+
+#buttonsContainer {
   display: flex;
   justify-content: space-between;
-  outline: 1px solid black;
-  height: 80%;
+  height: 75%;
   border-radius: 5px;
+  box-sizing: border-box;
+  border: 2px solid #05386b;
+  /* border: 2px solid #AA96DA; */
+  /* border: 2px solid #da7b93; */
+
+  background-color: #e3d79e;
+  /* background-color: #FFFFD2; */
+  /* background-color: #FBEAEB; */
 }
 
-#numberOperatorContainer {
+#leftSideContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   flex: 4;
 }
 
-#operatorContainer {
+#leftSideContainer button,
+.subtract {
+  width: 4em;
+  height: 4em;
+  border-radius: 100%;
+}
+
+#leftSideContainer button {
   box-sizing: border-box;
-  border-left: 1px solid black;
+  border: 2px solid #2F3C7E;
+  /* border: 2px solid #AA96DA; */
+  /* border: 2px solid #da7b93; */
+
+  background-color: #FCE77D;
+  /* background-color: #C5FAD5; */
+  color: #2F3C7E;
+  /* color: #AA96DA; */
+  /* color: #da7b93; */
+  font-weight: bolder;
+}
+
+#leftSideContainer .sevenToNine button,
+#leftSideContainer .fourToSix button,
+#leftSideContainer .oneToThree button,
+#leftSideContainer .clearZeroPoint .zero {
+  border-radius: 100%;
+}
+
+#leftSideContainer div {
+  display: flex;
+  justify-content: space-around;
+}
+
+#rightSideContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  /* box-sizing: border-box;
+  border-left: 1px solid black; */
   flex: 1.2;
 }
 
+.add,
+.operate {
+  width: 4em;
+  height: 8em;
+  border-radius: 6px;
+}
 
+.add,
+.operate,
+.subtract,
+#leftSideContainer .multiply,
+#leftSideContainer .divide,
+#leftSideContainer .clear, 
+#leftSideContainer .undo,
+#leftSideContainer .point {
+  box-sizing: border-box;
+  border: 1px solid #FCE77D;
+  /* border: 1px solid #C5FAD5; */
+  /* background-color: #05386b; */
+  /* background-color: #F96167; */
+  background-color: #2F3C7E;
+  /* background-color: #AA96DA; */
+  /* background-color: #ee4c7c; */
+  /* background-color: #da7b93; */
+  color: #FCE77D;
+  /* color: #C5FAD5; */
+  font-weight: bolder;
+  /* background-color: #963740; */
+}
 
 /* Extra small and small devices (phones, 600px and down, portrait tablets and large phones, 600px and up) */
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   #calculator {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-    width: 100%;
+    height: 25em;
+    width: 15em;
+  }
+
+  #display {
+    box-sizing: border-box;
+    padding: 2em;
+    border: 2px solid #2F3C7E;
+    /* border: 2px solid #AA96DA; */
+    /* border: 2px solid #da7b93; */
+
+    border-radius: 5px;
   }
 }
 
 /* Medium, large and extra large devices (landscape tablets, 768px and up, laptops/desktops, 992px and up), large laptops and desktops, 1200px and up */
 @media only screen and (min-width: 768px) {
   #calculator {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 25em;
-    height: 35em;
+    width: 15.5em;
+    height: 25em;
   }
 }
 

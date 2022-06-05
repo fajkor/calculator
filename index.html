@@ -6,14 +6,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="reset.css">
   <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
   <title>Calculator</title>
 </head>
 <body>
   <div id="calculator">
-    <input id="number" type="number" placeholder="0000000000">
-    <div id="container">
-      <div id="numberOperatorContainer"></div>
-      <div id="operatorContainer"></div>
+    <div id="display"><p>000000000000000000000</p></div>
+    <div id="buttonsContainer">
+      <div id="leftSideContainer">
+        <div class="undoDivideMultiply">
+          <button class="undo">Undo</button>
+          <button class="divide">/</button>
+          <button class="multiply">*</button>
+        </div>
+          <div class="sevenToNine">
+            <button class="seven">7</button>
+            <button class="eight">8</button>
+            <button class="nine">9</button>
+          </div>
+          <div class="fourToSix">
+            <button class="four">4</button>
+            <button class="five">5</button>
+            <button class="six">6</button>
+          </div>
+          <div class="oneToThree">
+            <button class="one">1</button>
+            <button class="two">2</button>
+            <button class="three">3</button>
+          </div>
+          <div class="clearZeroPoint">
+            <button class="clear">Clear</button>
+            <button class="zero">0</button>
+            <button class="point">.</button>
+          </div>
+      </div>
+      <div id="rightSideContainer">
+        <button class="subtract">-</button>
+        <button class="add">+</button>
+        <button class="operate">Enter</button>
+      </div>
     </div>
   </div>
 </body>
