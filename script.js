@@ -1,19 +1,33 @@
 const p = document.querySelector(`p`);
 const numberArray = Array.from(document.querySelectorAll(`.number`));
-let displayValue = p.textContent;
+// let displayValue = p.textContent;
+let operatorArray = Array.from(document.querySelectorAll(`.operator`));
 
 /* When a number gets clicked show it on the calculator display and update displayValue with what the display shows */
 numberArray.map(number => {
   number.addEventListener(`click`, () => {
     number.classList.add(`clicked`);
-    displayValue = populateDisplay();
+      populateDisplay();
+    // displayValue = populateDisplay();
+    // console.log(displayValue);
+  });
+});
+
+operatorArray.map(operator => {
+  // console.log(operator);
+  operator.addEventListener(`click`, () => {
+    let displayValue = +document.querySelector(`p`).textContent;
+    document.querySelector(`p`).textContent = 0;
   });
 });
 
 /* A function to populate the display of the calculator and then return that value */
 function populateDisplay() {
   numberArray.map(() => {
-    if(document.querySelector(`.clicked`)) {
+    /* An if statement to check if a button has been clicked */
+    /* Every time a button gets clicked, a class='clicked' gets added to it.
+    All we need to do is check if that class exists */
+    if(document.querySelector(`.clicked`)) { /* if class='clicked' exists */
       if(p.textContent === `0`) {
         p.textContent = ``;
         let clicked = document.querySelector(`.clicked`);
@@ -26,7 +40,7 @@ function populateDisplay() {
       }
     }
   });
-  return p.textContent;
+  // return +p.textContent;
 }
 
 function removeElement(parentElement, childElement) {
