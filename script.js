@@ -1,46 +1,58 @@
 const p = document.querySelector(`p`);
 const numberArray = Array.from(document.querySelectorAll(`.number`));
-// let displayValue = p.textContent;
-let operatorArray = Array.from(document.querySelectorAll(`.operator`));
+const operatorArray = Array.from(document.querySelectorAll(`.operator`));
 
-/* When a number gets clicked show it on the calculator display and update displayValue with what the display shows */
+/* When a number gets clicked show it on the display and update displayValue */
 numberArray.map(number => {
   number.addEventListener(`click`, () => {
-    number.classList.add(`clicked`);
+    number.classList.add(`numberClicked`); /* I add the class so I know which number has been clicked */
       populateDisplay();
-    // displayValue = populateDisplay();
-    // console.log(displayValue);
   });
 });
 
+/* When an operator gets clicked show it on the display and update displayValue */
 operatorArray.map(operator => {
-  // console.log(operator);
   operator.addEventListener(`click`, () => {
-    let displayValue = +document.querySelector(`p`).textContent;
-    document.querySelector(`p`).textContent = 0;
+    operator.classList.add(`operatorClicked`); /* I add the class so I know which operator has been clicked */
+    populateDisplay();
   });
 });
 
-/* A function to populate the display of the calculator and then return that value */
+/* A function to populate the display of the calculator */
 function populateDisplay() {
-  numberArray.map(() => {
     /* An if statement to check if a button has been clicked */
-    /* Every time a button gets clicked, a class='clicked' gets added to it.
+    /* Every time a button gets clicked, a class='numberClicked' gets added to it.
     All we need to do is check if that class exists */
-    if(document.querySelector(`.clicked`)) { /* if class='clicked' exists */
-      if(p.textContent === `0`) {
-        p.textContent = ``;
-        let clicked = document.querySelector(`.clicked`);
-        p.textContent += clicked.textContent;
-        clicked.classList.remove(`clicked`);
-      } else {
-        let clicked = document.querySelector(`.clicked`);
-        p.textContent += clicked.textContent;
-        clicked.classList.remove(`clicked`);
+    if(document.querySelector(`.numberClicked`)) { /* if class='numberClicked' exists */
+      let numberClicked = document.querySelector(`.numberClicked`);
+      if(p.textContent === `######`) {
+        p.textContent = numberClicked.textContent;
+        let displayValueOne = +document.querySelector(`p`).textContent;
+        console.log(displayValueOne);
+      } else if (p.textContent.includes(`+`) || p.textContent.includes(`-`) || p.textContent.includes(`*`) || p.textContent.includes(`/`)){ /* I need here to check if an operator (+, -, *, /) is shown on the display. This "else if" clause needs to here, in the middle of the if statement. If it is last, it won’t work. */
+        /* Here the display is updated with the second number. */
+        p.textContent = numberClicked.textContent;
+        let displayValueTwo = +document.querySelector(`p`).textContent;
+        console.log(displayValueTwo);
+      } else { /* This "else" clause updates the display with the first value we give to the calculator, if the number has more than 1 digits. */
+        p.textContent += numberClicked.textContent;
+        let displayValueOne = +document.querySelector(`p`).textContent;
+        console.log(displayValueOne);
       }
+      numberClicked.classList.remove(`numberClicked`); /* !Important! numberClicked class, needs to be removed. It served its purpose. Now this same class needs to be added to another number button (or to the same). */
+    } else if (document.querySelector(`.operatorClicked`)) {
+        let operatorClicked = document.querySelector(`.operatorClicked`);
+        if(p.textContent === `######`){ /* I need this "if" clause in case the user clicks an operator before clicking a number */
+          p.textContent = operatorClicked.textContent;
+        } else {
+          // let displayValueOne = +document.querySelector(`p`).textContent;
+          document.querySelector(`p`).textContent = document.querySelector(`p`).textContent + ` ` + document.querySelector(`.operatorClicked`).textContent;
+        }
+        operatorClicked.classList.remove(`.operatorClicked`);
+        operatorArray.map(operator => {
+          operator.disabled = true;
+        });
     }
-  });
-  // return +p.textContent;
 }
 
 function removeElement(parentElement, childElement) {
