@@ -14,7 +14,7 @@ numberArray.map(number => {
 operatorArray.map(operator => {
   operator.addEventListener(`click`, () => {
     operator.classList.add(`operatorClicked`); /* I add the class so I know which operator has been clicked */
-    populateDisplay();
+    showOperator();
   });
 });
 
@@ -29,18 +29,24 @@ function populateDisplay() {
         p.textContent = numberClicked.textContent;
         let displayValueOne = +document.querySelector(`p`).textContent;
         console.log(displayValueOne);
-      } else if (p.textContent.includes(`+`) || p.textContent.includes(`-`) || p.textContent.includes(`*`) || p.textContent.includes(`/`)){ /* I need here to check if an operator (+, -, *, /) is shown on the display. This "else if" clause needs to here, in the middle of the if statement. If it is last, it won’t work. */
+      } else if(p.textContent === `-` || p.textContent === `+`) { /* I need here to check if a plus or minus operator (-, +) is shown on the display. */
+          p.textContent += numberClicked.textContent;
+      } else if(p.textContent.includes(`+`) || p.textContent.includes(`-`) || p.textContent.includes(`/`) || p.textContent.includes(`*`)) {
         /* Here the display is updated with the second number. */
         p.textContent = numberClicked.textContent;
         let displayValueTwo = +document.querySelector(`p`).textContent;
         console.log(displayValueTwo);
       } else { /* This "else" clause updates the display with the first value we give to the calculator, if the number has more than 1 digits. */
-        p.textContent += numberClicked.textContent;
-        let displayValueOne = +document.querySelector(`p`).textContent;
-        console.log(displayValueOne);
-      }
+    p.textContent += numberClicked.textContent;
+    let displayValueOne = +document.querySelector(`p`).textContent;
+    console.log(displayValueOne);
+  }
       numberClicked.classList.remove(`numberClicked`); /* !Important! numberClicked class, needs to be removed. It served its purpose. Now this same class needs to be added to another number button (or to the same). */
-    } else if (document.querySelector(`.operatorClicked`)) {
+    } 
+  }
+
+  function showOperator() {
+    if (document.querySelector(`.operatorClicked`)) {
         let operatorClicked = document.querySelector(`.operatorClicked`);
         if(p.textContent === `######`){ /* I need this "if" clause in case the user clicks an operator before clicking a number */
           p.textContent = operatorClicked.textContent;
@@ -53,7 +59,8 @@ function populateDisplay() {
           operator.disabled = true;
         });
     }
-}
+  }
+
 
 function removeElement(parentElement, childElement) {
   parentElement.removeChild(childElement);
