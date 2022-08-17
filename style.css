@@ -110,14 +110,14 @@ p {
 }
 
 .add,
-.operate {
+.enter {
   width: 4em;
   height: 8em;
   border-radius: 6px;
 }
 
 .add,
-.operate,
+.enter,
 .subtract,
 #leftSideContainer .multiply,
 #leftSideContainer .divide,
